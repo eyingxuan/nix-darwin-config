@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -16,6 +21,7 @@
   # changes in each release.
   home.stateVersion = "24.05";
 
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -24,6 +30,18 @@
       enable = true;
       enableZshIntegration = true;
       nix-direnv.enable = true;
+    };
+
+    kitty = {
+      # we can't really use this for some reason and have to rely on
+      # the brew cask for kitty. only enable for the settings file
+      #
+      # the brew path shadows the nix store path
+      enable = true;
+      settings = {
+        "macos_option_as_alt" = true;
+        "font_size" = "14.0";
+      };
     };
 
     fzf = {
@@ -38,7 +56,7 @@
       userName = "Ying Xuan Eng";
       userEmail = "engyingxuan@gmail.com";
       signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILahCDtkc84c6FuYxWBCE05O3stfRJIbm0yFh6ZlWIjq";
-      ignores = [ ".DS_Store"];
+      ignores = [ ".DS_Store" ];
       extraConfig = {
         gpg.format = "ssh";
         gpg.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
@@ -62,9 +80,9 @@
     ssh = {
       enable = true;
       extraConfig = ''
-          Host *
-          IdentityAgent ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
-    '';
+        Host *
+        IdentityAgent ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+      '';
     };
 
   };

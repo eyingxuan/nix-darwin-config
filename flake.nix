@@ -39,7 +39,7 @@
 
             taps = [ ];
             brews = [ ];
-            casks = [ ];
+            casks = [ "kitty"  ];
           };
 
           users.users.yingxuan = {
