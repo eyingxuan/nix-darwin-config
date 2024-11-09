@@ -30,6 +30,7 @@
             ispell
             nixfmt-rfc-style
             ripgrep
+            aerospace
           ];
 
           homebrew = {
@@ -50,6 +51,12 @@
               "raycast"
               "unnaturalscrollwheels"
             ];
+          };
+
+          system.defaults.CustomUserPreferences = {
+            "com.apple.dock" = {
+              "expose-group-apps" = true;
+            };
           };
 
           users.users.yingxuan = {

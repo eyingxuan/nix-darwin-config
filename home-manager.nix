@@ -25,6 +25,8 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  home.file.".config/aerospace/aerospace.toml".source = ./aerospace.toml;
+
   programs = {
     direnv = {
       enable = true;
