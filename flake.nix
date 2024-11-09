@@ -35,11 +35,21 @@
           homebrew = {
             enable = true;
             onActivation.autoUpdate = false;
-            # onActivation.cleanup = "uninstall";
+            onActivation.cleanup = "uninstall";
 
-            taps = [ ];
-            brews = [ ];
-            casks = [ "kitty"  ];
+            taps = [ "d12frosted/emacs-plus" ];
+            brews = [
+              {
+                name = "d12frosted/emacs-plus/emacs-plus@29";
+                args = [ "with-native-comp" ];
+              }
+            ];
+
+            casks = [
+              "kitty"
+              "raycast"
+              "unnaturalscrollwheels"
+            ];
           };
 
           users.users.yingxuan = {
