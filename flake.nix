@@ -40,10 +40,7 @@
 
             taps = [ "d12frosted/emacs-plus" ];
             brews = [
-              {
-                name = "d12frosted/emacs-plus/emacs-plus@29";
-                args = [ "with-native-comp" ];
-              }
+              "d12frosted/emacs-plus/emacs-plus@29"
             ];
 
             casks = [
@@ -57,6 +54,14 @@
             "com.apple.dock" = {
               "expose-group-apps" = true;
             };
+
+            "com.apple.spaces" = {
+              "spans-displays" = true;
+            };
+
+            "NSGlobalDomain" = {
+              "NSWindowShouldDragOnGesture" = true;
+            };
           };
 
           users.users.yingxuan = {
@@ -65,6 +70,10 @@
           };
 
           nix.settings.trusted-users = [ "yingxuan" ];
+
+          nix.gc = {
+            automatic = true;
+          };
 
           # use touch id for sudo
           security.pam.enableSudoTouchIdAuth = true;
