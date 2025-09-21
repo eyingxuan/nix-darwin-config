@@ -75,7 +75,7 @@
       enable = true;
       shellAliases = {
         switch = "darwin-rebuild switch --flake ~/.config/nix-darwin";
-        ec = "emacsclient -a '' -c -t";
+        e = "emacsclient -a '' -c -t";
       };
     };
 

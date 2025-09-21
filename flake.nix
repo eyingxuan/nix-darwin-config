@@ -65,6 +65,8 @@
             };
           };
 
+          system.primaryUser = "yingxuan";
+
           users.users.yingxuan = {
             name = "yingxuan";
             home = "/Users/yingxuan";
@@ -77,10 +79,11 @@
           };
 
           # use touch id for sudo
-          security.pam.enableSudoTouchIdAuth = true;
+          # security.pam.enableSudoTouchIdAuth = true;
+          security.pam.services.sudo_local.touchIdAuth = true;
 
           # Auto upgrade nix package and the daemon service.
-          services.nix-daemon.enable = true;
+          # services.nix-daemon.enable = true;
           # nix.package = pkgs.nix;
 
           # Necessary for using flakes on this system.
