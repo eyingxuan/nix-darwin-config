@@ -54,11 +54,13 @@
     # shouldn't belong in home manager
     git = {
       enable = true;
-      userName = "Ying Xuan Eng";
-      userEmail = "engyingxuan@gmail.com";
       signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILahCDtkc84c6FuYxWBCE05O3stfRJIbm0yFh6ZlWIjq";
       ignores = [ ".DS_Store" ];
-      extraConfig = {
+      settings = {
+        user = {
+          name = "Ying Xuan Eng";
+          email = "engyingxuan@gmail.com";
+        };
         gpg.format = "ssh";
         gpg.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
         commit.gpgsign = true;
