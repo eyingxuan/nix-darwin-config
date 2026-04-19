@@ -47,7 +47,7 @@
 
             casks = [
               "raycast"
-              "unnaturalscrollwheels"
+              "linearmouse"
             ];
           };
 
