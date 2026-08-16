@@ -7,13 +7,17 @@ config-version = 2
 # them to be explicit if empty workspaces should remain available.
 persistent-workspaces = [
     '1', '2', '3', '4', '5', '6',
-    '7', '8', '9', '10', '11', '12',
+    '7', '8', '9', '10',
 ]
 
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 start-at-login = true
+
+[workspace-to-monitor-force-assignment]
+9 = ['^DELL U2720Q$', 'main']
+10 = ['^LG ULTRAWIDE$', 'main']
 
 [mode.main.binding]
 # See: https://nikitabobko.github.io/AeroSpace/goodness#open-a-new-window-with-applescript

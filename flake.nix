@@ -54,6 +54,7 @@
               "raycast"
               "linearmouse"
               "tailscale-app"
+              "legcord"
             ];
           };
 
