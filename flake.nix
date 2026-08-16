@@ -37,7 +37,10 @@
 
           homebrew = {
             enable = true;
-            onActivation.autoUpdate = false;
+            enableZshIntegration = true;
+
+            onActivation.autoUpdate = true;
+            onActivation.upgrade = true;
             onActivation.cleanup = "uninstall";
 
             taps = [ "d12frosted/emacs-plus" ];
@@ -46,8 +49,11 @@
             ];
 
             casks = [
+              "claude-code"
+              "codex"
               "raycast"
               "linearmouse"
+              "tailscale-app"
             ];
           };
 
