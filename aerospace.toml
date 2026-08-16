@@ -1,5 +1,15 @@
 # Reference: https://github.com/i3/i3/blob/next/etc/config
 
+# Use the latest config semantics.
+config-version = 2
+
+# Config version 1 inferred these from workspace bindings. Version 2 requires
+# them to be explicit if empty workspaces should remain available.
+persistent-workspaces = [
+    '1', '2', '3', '4', '5', '6',
+    '7', '8', '9', '10', '11', '12',
+]
+
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
