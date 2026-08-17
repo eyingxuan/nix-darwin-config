@@ -43,9 +43,11 @@
             onActivation.upgrade = true;
             onActivation.cleanup = "uninstall";
 
-            taps = [ "d12frosted/emacs-plus" ];
-            brews = [
-              "d12frosted/emacs-plus/emacs-plus@29"
+            taps = [
+              {
+                name = "d12frosted/emacs-plus";
+                trusted = true;
+              }
             ];
 
             casks = [
@@ -55,6 +57,7 @@
               "linearmouse"
               "tailscale-app"
               "legcord"
+              "d12frosted/emacs-plus/emacs-plus-app"
             ];
           };
 
