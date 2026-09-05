@@ -48,7 +48,13 @@
                 name = "d12frosted/emacs-plus";
                 trusted = true;
               }
+              {
+                name = "withgraphite/tap";
+                trusted = true;
+              }
             ];
+
+            brews = [ "withgraphite/tap/graphite" ];
 
             casks = [
               "claude-code"
