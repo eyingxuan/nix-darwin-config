@@ -57,13 +57,15 @@
             brews = [ "withgraphite/tap/graphite" ];
 
             casks = [
+              "ollama-app"
+              "chatgpt" # Codex desktop (replaces the deprecated codex-app cask).
               "claude-code"
               "codex"
-              "raycast"
               "linearmouse"
               "tailscale-app"
               "legcord"
               "d12frosted/emacs-plus/emacs-plus-app"
+              "kitty"
             ];
           };
 
