@@ -33,6 +33,7 @@
             ripgrep
             aerospace
             wabt
+            go-grip
           ];
 
           homebrew = {
@@ -54,13 +55,20 @@
               }
             ];
 
-            brews = [ "withgraphite/tap/graphite" ];
+            brews = [
+              "withgraphite/tap/graphite"
+              "pi-coding-agent"
+              "iperf3"
+              "fio"
+            ];
 
             casks = [
+              "1password-cli"
               "ollama-app"
               "chatgpt" # Codex desktop (replaces the deprecated codex-app cask).
               "claude-code"
               "codex"
+              "freefilesync"
               "linearmouse"
               "tailscale-app"
               "legcord"
@@ -128,6 +136,7 @@
       darwinConfigurations."yxeng-macbook" = nix-darwin.lib.darwinSystem {
         modules = [
           configuration
+          ./nfs.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
