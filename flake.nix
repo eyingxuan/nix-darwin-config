@@ -60,6 +60,7 @@
               "pi-coding-agent"
               "iperf3"
               "fio"
+              "youssofal/mtplx/mtplx"
             ];
 
             casks = [
