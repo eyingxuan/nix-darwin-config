@@ -187,7 +187,13 @@
       darwinConfigurations = {
         "yxeng-macbook" = mkHost { };
         "yxeng-mac-studio" = mkHost {
-          homebrew.brews = [ "youssofal/mtplx/mtplx" ];
+          homebrew.brews = [
+            "youssofal/mtplx/mtplx"
+          ];
+          homebrew.casks = [
+            "appcleaner"
+            "freefilesync"
+          ];
         };
       };
 
