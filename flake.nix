@@ -64,12 +64,9 @@
 
             casks = [
               "1password-cli"
-              "ollama-app"
               "chatgpt" # Codex desktop (replaces the deprecated codex-app cask).
               "claude-code"
               "codex"
-              "freefilesync"
-              "linearmouse"
               "tailscale-app"
               "legcord"
               "d12frosted/emacs-plus/emacs-plus-app"
@@ -77,9 +74,45 @@
             ];
           };
 
+          # Match the saved Dock preferences; leave unspecified macOS defaults alone.
+          system.defaults.dock = {
+            tilesize = 33;
+            show-recents = false;
+            expose-group-apps = true;
+            showAppExposeGestureEnabled = true;
+
+            persistent-apps = [
+              # Use the app directly; /Applications/Safari.app is a symlink with a shortcut badge.
+              "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+              "/System/Applications/Messages.app"
+              "/System/Applications/Reminders.app"
+              "/System/Applications/Notes.app"
+              "/System/Applications/System Settings.app"
+              "/System/Applications/Music.app"
+              "/Applications/kitty.app"
+              "/Applications/Rex Beta.app"
+            ];
+
+            persistent-others = [
+              {
+                folder = {
+                  path = "/Users/yingxuan/Downloads";
+                  arrangement = "date-added";
+                  displayas = "stack";
+                  showas = "automatic";
+                };
+              }
+            ];
+
+            wvous-tl-corner = 13; # Lock Screen (with Command held; see modifier below).
+            wvous-br-corner = 1; # Disabled.
+          };
+
           system.defaults.CustomUserPreferences = {
             "com.apple.dock" = {
-              "expose-group-apps" = true;
+              # Hot corner modifiers have no typed nix-darwin option.
+              "wvous-tl-modifier" = 1048576; # Command.
+              "wvous-br-modifier" = 0;
             };
 
             "com.apple.spaces" = {
