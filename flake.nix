@@ -60,6 +60,7 @@
               "pi-coding-agent"
               "iperf3"
               "fio"
+              "youssofal/mtplx/mtplx"
             ];
 
             casks = [
@@ -68,7 +69,6 @@
               "chatgpt" # Codex desktop (replaces the deprecated codex-app cask).
               "claude-code"
               "codex"
-              "freefilesync"
               "linearmouse"
               "tailscale-app"
               "legcord"
