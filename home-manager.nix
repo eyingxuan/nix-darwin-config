@@ -75,7 +75,7 @@
     zsh = {
       enable = true;
       shellAliases = {
-        switch = "sudo darwin-rebuild switch --flake ~/.config/nix-darwin#yxeng-macbook";
+        switch = "sudo darwin-rebuild switch --flake ~/.config/nix-darwin";
         e = "emacsclient -a '' -c -t";
       };
     };

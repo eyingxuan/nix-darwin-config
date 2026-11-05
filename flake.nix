@@ -60,7 +60,6 @@
               "pi-coding-agent"
               "iperf3"
               "fio"
-              "youssofal/mtplx/mtplx"
             ];
 
             casks = [
@@ -163,25 +162,33 @@
           # The platform the configuration will be used on.
           nixpkgs.hostPlatform = "aarch64-darwin";
         };
+      mkHost =
+        hostConfiguration:
+        nix-darwin.lib.darwinSystem {
+          modules = [
+            configuration
+            hostConfiguration
+            ./nfs.nix
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.yingxuan = import ./home-manager.nix;
+
+              # Optionally, use home-manager.extraSpecialArgs to pass
+              # arguments to home.nix
+            }
+          ];
+        };
     in
     {
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#yxeng-macbook
-      darwinConfigurations."yxeng-macbook" = nix-darwin.lib.darwinSystem {
-        modules = [
-          configuration
-          ./nfs.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.yingxuan = import ./home-manager.nix;
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
-          }
-
-        ];
+      # Without a #host suffix, darwin-rebuild uses scutil --get LocalHostName.
+      # $ darwin-rebuild build --flake .
+      darwinConfigurations = {
+        "yxeng-macbook" = mkHost { };
+        "yxeng-mac-studio" = mkHost {
+          homebrew.brews = [ "youssofal/mtplx/mtplx" ];
+        };
       };
 
       # Expose the package set, including overlays, for convenience.
