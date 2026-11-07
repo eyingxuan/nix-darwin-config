@@ -71,6 +71,9 @@
               "legcord"
               "d12frosted/emacs-plus/emacs-plus-app"
               "kitty"
+              "spotify"
+              "istat-menus@6"
+              "monitorcontrol"
             ];
           };
 
