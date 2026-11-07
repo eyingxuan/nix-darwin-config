@@ -53,6 +53,10 @@
                 name = "withgraphite/tap";
                 trusted = true;
               }
+              {
+                name = "openai/tools";
+                trusted = true;
+              }
             ];
 
             brews = [
@@ -60,6 +64,7 @@
               "pi-coding-agent"
               "iperf3"
               "fio"
+              "openai/tools/tart"
             ];
 
             casks = [
@@ -74,6 +79,7 @@
               "spotify"
               "istat-menus@6"
               "monitorcontrol"
+              "whatsapp"
             ];
           };
 
@@ -111,7 +117,34 @@
             wvous-br-corner = 1; # Disabled.
           };
 
+          # Applies to both built-in and Bluetooth trackpads.
+          system.defaults.trackpad.TrackpadThreeFingerDrag = true;
+
           system.defaults.CustomUserPreferences = {
+            "com.apple.HIToolbox" = {
+              # U.S. English plus Pinyin - Simplified; keep macOS helper input sources.
+              AppleEnabledInputSources = [
+                {
+                  InputSourceKind = "Keyboard Layout";
+                  "KeyboardLayout ID" = 0;
+                  "KeyboardLayout Name" = "U.S.";
+                }
+                {
+                  InputSourceKind = "Keyboard Input Method";
+                  "Bundle ID" = "com.apple.inputmethod.SCIM";
+                  "Input Mode" = "com.apple.inputmethod.SCIM.ITABC";
+                }
+                {
+                  InputSourceKind = "Non Keyboard Input Method";
+                  "Bundle ID" = "com.apple.CharacterPaletteIM";
+                }
+                {
+                  InputSourceKind = "Non Keyboard Input Method";
+                  "Bundle ID" = "com.apple.PressAndHold";
+                }
+              ];
+            };
+
             "com.apple.dock" = {
               # Hot corner modifiers have no typed nix-darwin option.
               "wvous-tl-modifier" = 1048576; # Command.
