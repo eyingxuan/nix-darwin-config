@@ -42,7 +42,14 @@
 
             onActivation.autoUpdate = true;
             onActivation.upgrade = true;
+            # Bundle cleanup also removes App Store apps absent from masApps.
             onActivation.cleanup = "uninstall";
+
+            masApps = {
+              "1Password for Safari" = 1569813296;
+              "Fill Window for Video" = 6788161965;
+              "Xcode" = 497799835;
+            };
 
             taps = [
               {
