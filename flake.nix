@@ -48,6 +48,7 @@
             masApps = {
               "1Password for Safari" = 1569813296;
               "Fill Window for Video" = 6788161965;
+              "WireGuard" = 1451685025;
               "Xcode" = 497799835;
             };
 
@@ -60,10 +61,6 @@
                 name = "withgraphite/tap";
                 trusted = true;
               }
-              {
-                name = "openai/tools";
-                trusted = true;
-              }
             ];
 
             brews = [
@@ -71,7 +68,6 @@
               "pi-coding-agent"
               "iperf3"
               "fio"
-              "openai/tools/tart"
             ];
 
             casks = [
@@ -230,7 +226,14 @@
       darwinConfigurations = {
         "yxeng-macbook" = mkHost { };
         "yxeng-mac-studio" = mkHost {
+          homebrew.taps = [
+            {
+              name = "openai/tools";
+              trusted = true;
+            }
+          ];
           homebrew.brews = [
+            "openai/tools/tart"
             "youssofal/mtplx/mtplx"
           ];
           homebrew.casks = [
