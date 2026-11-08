@@ -71,9 +71,9 @@
               "legcord"
               "d12frosted/emacs-plus/emacs-plus-app"
               "kitty"
+              "appcleaner"
               "spotify"
               "istat-menus@6"
-              "monitorcontrol"
             ];
           };
 
@@ -194,8 +194,8 @@
             "youssofal/mtplx/mtplx"
           ];
           homebrew.casks = [
-            "appcleaner"
             "freefilesync"
+              "monitorcontrol"
           ];
         };
       };
