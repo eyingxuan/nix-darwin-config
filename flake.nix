@@ -42,7 +42,14 @@
 
             onActivation.autoUpdate = true;
             onActivation.upgrade = true;
+            # Bundle cleanup also removes App Store apps absent from masApps.
             onActivation.cleanup = "uninstall";
+
+            masApps = {
+              "1Password for Safari" = 1569813296;
+              "Fill Window for Video" = 6788161965;
+              "Xcode" = 497799835;
+            };
 
             taps = [
               {
@@ -53,6 +60,10 @@
                 name = "withgraphite/tap";
                 trusted = true;
               }
+              {
+                name = "openai/tools";
+                trusted = true;
+              }
             ];
 
             brews = [
@@ -60,6 +71,7 @@
               "pi-coding-agent"
               "iperf3"
               "fio"
+              "openai/tools/tart"
             ];
 
             casks = [
@@ -74,6 +86,7 @@
               "appcleaner"
               "spotify"
               "istat-menus@6"
+              "whatsapp"
             ];
           };
 
@@ -111,7 +124,34 @@
             wvous-br-corner = 1; # Disabled.
           };
 
+          # Applies to both built-in and Bluetooth trackpads.
+          system.defaults.trackpad.TrackpadThreeFingerDrag = true;
+
           system.defaults.CustomUserPreferences = {
+            "com.apple.HIToolbox" = {
+              # U.S. English plus Pinyin - Simplified; keep macOS helper input sources.
+              AppleEnabledInputSources = [
+                {
+                  InputSourceKind = "Keyboard Layout";
+                  "KeyboardLayout ID" = 0;
+                  "KeyboardLayout Name" = "U.S.";
+                }
+                {
+                  InputSourceKind = "Keyboard Input Method";
+                  "Bundle ID" = "com.apple.inputmethod.SCIM";
+                  "Input Mode" = "com.apple.inputmethod.SCIM.ITABC";
+                }
+                {
+                  InputSourceKind = "Non Keyboard Input Method";
+                  "Bundle ID" = "com.apple.CharacterPaletteIM";
+                }
+                {
+                  InputSourceKind = "Non Keyboard Input Method";
+                  "Bundle ID" = "com.apple.PressAndHold";
+                }
+              ];
+            };
+
             "com.apple.dock" = {
               # Hot corner modifiers have no typed nix-darwin option.
               "wvous-tl-modifier" = 1048576; # Command.
@@ -195,7 +235,7 @@
           ];
           homebrew.casks = [
             "freefilesync"
-              "monitorcontrol"
+            "monitorcontrol"
           ];
         };
       };
