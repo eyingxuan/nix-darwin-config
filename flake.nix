@@ -53,6 +53,11 @@
 
             taps = [
               {
+                name = "yxeng/vibes";
+                clone_target = "https://forgejo.apps.lab.home.arpa/yxeng/vibes.git";
+                trusted = true;
+              }
+              {
                 name = "d12frosted/emacs-plus";
                 trusted = true;
               }
@@ -75,6 +80,10 @@
             ];
 
             casks = [
+              {
+                name = "yxeng/vibes/alcove";
+                args.appdir = "/Applications";
+              }
               "1password-cli"
               "chatgpt" # Codex desktop (replaces the deprecated codex-app cask).
               "claude-code"
@@ -184,6 +193,8 @@
           # security.pam.enableSudoTouchIdAuth = true;
           security.pam.services.sudo_local.touchIdAuth = true;
 
+          security.pki.certificateFiles = [ ./certs/knossos-root-ca.pem ];
+
           # Auto upgrade nix package and the daemon service.
           # services.nix-daemon.enable = true;
           # nix.package = pkgs.nix;
@@ -232,8 +243,12 @@
         "yxeng-mac-studio" = mkHost {
           homebrew.brews = [
             "youssofal/mtplx/mtplx"
+            "libvirt"
+            "qemu"
+            "cdrtools"
           ];
           homebrew.casks = [
+            "yxeng/vibes/bakery"
             "appcleaner"
             "freefilesync"
           ];
