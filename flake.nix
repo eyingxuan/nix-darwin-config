@@ -73,6 +73,7 @@
               "pi-coding-agent"
               "iperf3"
               "fio"
+              "git-town"
             ];
 
             casks = [
@@ -92,6 +93,7 @@
               "spotify"
               "istat-menus@6"
               "whatsapp"
+              "exo"
             ];
           };
 
@@ -142,7 +144,13 @@
                   "KeyboardLayout Name" = "U.S.";
                 }
                 {
+                  # Enable the parent method as well as its Pinyin mode.
                   InputSourceKind = "Keyboard Input Method";
+                  "Bundle ID" = "com.apple.inputmethod.SCIM";
+                }
+                {
+                  # Pinyin is a mode within SCIM, not the input method itself.
+                  InputSourceKind = "Input Mode";
                   "Bundle ID" = "com.apple.inputmethod.SCIM";
                   "Input Mode" = "com.apple.inputmethod.SCIM.ITABC";
                 }
@@ -237,13 +245,28 @@
       darwinConfigurations = {
         "yxeng-macbook" = mkHost { };
         "yxeng-mac-studio" = mkHost {
+          # Reapply the GPU wired memory limit at boot.
+          launchd.daemons.iogpu-wired-limit.serviceConfig = {
+            ProgramArguments = [
+              "/usr/sbin/sysctl"
+              "iogpu.wired_limit_mb=124518"
+            ];
+            RunAtLoad = true;
+          };
+
           homebrew.taps = [
+            {
+              name = "jundot/omlx";
+              clone_target = "https://github.com/jundot/omlx";
+              trusted = true;
+            }
             {
               name = "openai/tools";
               trusted = true;
             }
           ];
           homebrew.brews = [
+            "jundot/omlx/omlx"
             "openai/tools/tart"
             "youssofal/mtplx/mtplx"
             "libvirt"
