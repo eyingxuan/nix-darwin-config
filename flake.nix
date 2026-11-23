@@ -268,7 +268,6 @@
           homebrew.brews = [
             "jundot/omlx/omlx"
             "openai/tools/tart"
-            "youssofal/mtplx/mtplx"
             "libvirt"
             "qemu"
             "cdrtools"
