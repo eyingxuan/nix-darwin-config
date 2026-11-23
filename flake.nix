@@ -99,7 +99,6 @@
               "spotify"
               "istat-menus@6"
               "whatsapp"
-              "exo"
             ];
           };
 
